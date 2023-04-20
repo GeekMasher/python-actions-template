@@ -33,7 +33,9 @@ jobs:
     - name: Run Tests
       run: |
         PYTHONPATH=$PWD:$PWD/vendor
-        python -m unittest discover -v -s ./tests -p "test_*.py"
+        if [[ -d "./tests" ]]; then
+            python -m unittest discover -v -s ./tests -p "test_*.py"
+        fi
 
     - name: Run Main
       env:
