@@ -34,7 +34,7 @@ jobs:
       run: |
         PYTHONPATH=$PWD:$PWD/vendor
         if [[ -d "./tests" ]]; then
-            python -m unittest discover -v -s ./tests -p "test_*.py"
+            pipenv run test
         fi
 
     - name: Run Main
@@ -42,7 +42,7 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       run: |
         PYTHONPATH=$PWD:$PWD/vendor
-        pipenv run python3 -m myaction
+        pipenv run main
 
   action-test:
     runs-on: ubuntu-latest
